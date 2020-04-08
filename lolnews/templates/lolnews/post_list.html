@@ -1,0 +1,11 @@
+{% extends "lolnews/base.html" %}
+{% block content %}
+    {% for post in posts %}
+         <div class="post">
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <span class="data_postagem">{{ post.published_date }}</span>
+            <img width="550px" src=".\static\imagens\lol_art.jpg">
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+	{% endfor %}
+{% endblock %}

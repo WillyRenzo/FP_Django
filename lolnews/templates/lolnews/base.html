@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+
+        <title>TecBlog</title>
+		<meta charset="utf-8">
+		<!-- BOOTSTRAP AND FONT TEXT-->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		
+		<!-- CSS TEXT-->
+		<link rel="stylesheet" href="{% static "css/estilo.css" %}">
+		
+		<!-- FAVICON TEXT -->
+		<link rel="shortcut icon" href="./static/imagens/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="./static/imagens/favicon.ico" type="image/x-icon">
+
+		{% block extrahead %}
+		{% endblock %}
+
+	</head>
+	<body>
+		<!-- Contéudo do site!-->
+		<div id="cabecalho">
+			<!-- Logo -->
+			<div id="logo">
+				<h1><a href="{% url 'post_list'%}">TecBlog</a></h1>
+			</div>
+			<!-- Menu -->
+			<div id="menu">
+				{% if user.is_authenticated %}
+				<a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span></a>
+				{% endif %}
+				<a href="index.html">Home</a>
+				<a href="jogos.html">Jogos</a>
+				<a href="celulares.html">Celulares</a>
+				<a href="informatica.html">Informática</a>
+				<a href="eletronicos.html">Eletrônicos</a>
+			</div>
+		</div>
+		<!-- Contéudo abaixo do menu -->
+		<div id="principal">
+			<!-- Postagens -->
+			<div id="area_postagens">
+                {% block content %}
+                {% endblock %}
+			</div>
+			<!-- Menu Lateral-->
+			<div id="menu-lateral">
+				<div class="conteudo_lateral">
+					<h3>Postagens recentes</h3>
+					<div class="postagem_lateral">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<a href="">Leia mais</a>
+					</div>
+					<div class="postagem_lateral">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<a href="">Leia mais</a>
+					</div>
+				</div>
+				<div class="conteudo_lateral">
+					<h3>Categorias</h3>
+					<a href="jogos.html">Jogos</a>
+					<a href="celulares.html">Celulares</a>
+					<a href="informatica.html">Informática</a>
+					<a href="eletronicos.html">Eletrônicos</a>
+					
+				</div>
+			</div>
+			<div id="rodape">
+				Todos os direitos reservados
+			</div>
+		</div>
+	</body>
+</html>
